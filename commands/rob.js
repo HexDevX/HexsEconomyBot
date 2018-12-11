@@ -9,6 +9,9 @@ exports.run = async (client, message, args, config) => {
     let author = await db.fetch(`money_${message.author.id}`) // fetch authors balance
 
 
+    if (!user) {
+        return message.channel.send('Sorry, you forgot to mention somebody.')
+    }
     if (author < 250) { // if the authors balance is less than 250, return this.
         return message.channel.send(':x: You need atleast 250$ to rob somebody.')
     }

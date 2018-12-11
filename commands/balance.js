@@ -8,6 +8,7 @@ exports.run = async (client, message, args, config) => {
     let money = await db.fetch(`money_${user.id}`)
     if (money === null) money = 0;
 
+
     message.channel.send(`${user} you have ${money}$ !`)
 
 }
