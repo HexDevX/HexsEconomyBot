@@ -1,14 +1,13 @@
-const db = require('quick.db')
 const Discord = require('discord.js')
+const db = require('quick.db')
 
-exports.run = async (client, message, args, config) => {
+module.exports.run = async (bot, message, args) => {
 
-    let user = message.mentions.members.first() || message.author;
+    let bal = db.fetch(`money_${message.guild.id}_${message.author.id}`)
 
-    let money = await db.fetch(`money_${user.id}`)
-    if (money === null) money = 0;
+    if (bal === null) bal = 0;
 
+    message.channel.send('You have a balance of `' + bal + '`')
 
-    message.channel.send(`${user} you have ${money}$ !`)
 
 }
